@@ -97,3 +97,11 @@ function checkPassword(minLength) {
 elPassword.addEventListener('blur',function() {
   checkPassword(6);
 }, false);
+
+function setup() {
+  var textInput;
+  textInput = document.getElementById('username');
+  textInput.focus();
+}
+
+window.addEventListener('load',setup,false);

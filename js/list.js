@@ -78,3 +78,15 @@ if (el.addEventListener) {
     itemDone(e);
   }, false);
 }
+
+function addList() {
+
+var addForm = document.querySelectorAll('.add');
+var addItem = document.getElementsByClassName('add-form');
+
+addForm[0].addEventListener('click', function() {
+  addItem.classList.remove('close');
+  addItem.classList.add('open');
+  addItem.querySelectorAll('input')[0].focus();
+}.bind(this));
+}
