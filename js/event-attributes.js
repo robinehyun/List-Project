@@ -33,43 +33,70 @@
 //   }, false);
 // }
 
-//declare function
-function checkLength(e, minLength) {
-  //declare variables
-  var el, elMsg;
-  //If event object doesnt exist
-  if (!e) {
-    //Use IE fallback
-    e = window.event;
-  }
-  //Get target of event. srcElement is target property for IE5-8 equivalent
-  el = e.target || e.srcElement;
-  //Get its next sibling
-  elMsg = el.nextSibling;
-  //If length is too short set msg
-  if (el.value.length < minLength) {
-    elMsg.innerHTML = 'Username must be ' + minLength + ' characters of more';
+function checkUsername() {
+  //Store username variable
+  var username = el.value;
+  //If username is less than 5
+  if (username.length < 5) {
+  //change classname to warning
+  elMsg.className = 'warning';
+  //update msg
+  elMsg.textContent = 'Not long enough, yet...';
   } else {
-    elMsg.innerHTML = '';
+  //otherwise, clear msg
+  elMsg.textContent = '';
   }
-}
-//Get username input
-var elUsername = document.getElementById('username');
-//If event listener supported
-if (elUsername.addEventListener) {
-  //on blur event
-  elUsername.addEventListener('blur', function(e){
-    //call checklength
-    checkLength(e, 5);
-    //capture in bubble phase
-  }, false);
-  //Otherwise
-} else {
-  //IE fallback on blur
-  elUsername.attachEvent('blur', function(e){
-    checkLength(e,5);
-  }, false);
-}
+};
+
+function tipUsername() {
+  elMsg.className = 'tip';
+  elMsg.innerHTML = 'Username must be at least 5 characters';
+};
+
+var el = document.getElementById('username');
+var elMsg = document.getElementById('feedback');
+
+el.addEventListener('focus', tipUsername, false);
+console.log(el);
+elMsg.addEventListener('blur', checkUsername, false);
+
+//declare function
+// function checkLength(e, minLength) {
+//   //declare variables
+//   var el, elMsg;
+//   //If event object doesnt exist
+//   if (!e) {
+//     //Use IE fallback
+//     e = window.event;
+//   }
+//   //Get target of event. srcElement is target property for IE5-8 equivalent
+//   el = e.target || e.srcElement;
+//   //Get its next sibling
+//   elMsg = el.nextSibling;
+//   //If length is too short set msg
+//   if (el.value.length < minLength) {
+//     elMsg.innerHTML = 'Username must be ' + minLength + ' characters of more';
+//   } else {
+//     elMsg.innerHTML = '';
+//   }
+// }
+// //Get username input
+// var elUsername = document.getElementById('username');
+// //If event listener supported
+// if (elUsername.addEventListener) {
+//   //on blur event
+//   elUsername.addEventListener('blur', function(e){
+//     //call checklength
+//     checkLength(e, 5);
+//     //capture in bubble phase
+//   }, false);
+//   //Otherwise
+// } else {
+//   //IE fallback on blur
+//   elUsername.attachEvent('blur', function(e){
+//     checkLength(e,5);
+//   }, false);
+// }
 
 var elPassword = document.getElementById('password');
 var elMsg2 = document.getElementById('feedback2');

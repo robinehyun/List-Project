@@ -79,14 +79,26 @@ if (el.addEventListener) {
   }, false);
 }
 
-function addList() {
+// function addList() {
+//
+// var addForm = document.querySelectorAll('.add');
+// var addItem = document.getElementsByClassName('add-form');
+//
+// addForm[0].addEventListener('click', function() {
+//   addItem.classList.remove('.close');
+//   addItem.classList.add('.open');
+//   addItem.querySelectorAll('input')[0].focus();
+// });
+// }
+//
+// addList();
 
-var addForm = document.querySelectorAll('.add');
-var addItem = document.getElementsByClassName('add-form');
+var button = document.getElementsByClassName('buttonAdd');
+var form = document.getElementsByClassName('add-form');
 
-addForm[0].addEventListener('click', function() {
-  addItem.classList.remove('close');
-  addItem.classList.add('open');
-  addItem.querySelectorAll('input')[0].focus();
-}.bind(this));
-}
+button.onClick = function() {
+  form.classList.remove('close');
+  console.log(form);
+  form.classList.add('open');
+  form.querySelectorAll('input')[0].focus();
+};
